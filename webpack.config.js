@@ -8,8 +8,9 @@ module.exports = (env) => {
     mode: isDev ? 'development' : 'production',
     entry: './src/index.js',
     output: {
-      filename: 'main.js',
+      filename: 'main-[contenthash].js',
       path: path.resolve(__dirname, 'build'),
+      clean: true,
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -17,7 +18,9 @@ module.exports = (env) => {
       }),
     ],
     module: { rules: buildLoaders() },
-    resolve: {},
+    resolve: {
+      extensions: ['.js', '.css', '.scss'],
+    },
     devtool: 'inline-source-map',
     devServer: {
       static: './build',

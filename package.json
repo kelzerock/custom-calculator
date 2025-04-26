@@ -13,18 +13,6 @@
     "prettier": "prettier --write .",
     "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'"
   },
-  "lint-staged": {
-    "*.css": [
-      "prettier --write"
-    ],
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "!(*.css|*.js|*.jsx)": [
-      "prettier --write"
-    ]
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -37,7 +25,7 @@
     "html-webpack-plugin": "^5.6.3",
     "lint-staged": "^15.5.1",
     "prettier": "3.5.3",
-    "sass": "^1.86.3",
+    "sass": "^1.87.0",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
     "webpack": "^5.99.7",

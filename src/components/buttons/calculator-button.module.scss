@@ -1,0 +1,26 @@
+.buttonForMainOperation {
+  background-color: var(--color-stone-400);
+
+  &:hover {
+    background-color: var(--color-stone-500);
+    border: solid 2px var(--color-stone-500);
+  }
+}
+
+.buttonForNumber {
+  background-color: var(--color-orange-400);
+
+  &:hover {
+    background-color: var(--color-orange-500);
+    border: solid 2px var(--color-orange-600);
+  }
+}
+
+.buttonForOtherOperation {
+  background-color: var(--color-stone-500);
+
+  &:hover {
+    background-color: var(--color-stone-600);
+    border: solid 2px var(--color-stone-500);
+  }
+}
