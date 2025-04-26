@@ -1,31 +1,31 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { buildLoaders } = require("./webpack-configuration/build-loaders");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { buildLoaders } = require('./webpack-configuration/build-loaders');
 
 module.exports = (env) => {
-  const isDev = env?.mode === "dev" ? true : false;
+  const isDev = env?.mode === 'dev';
   const config = {
-    mode: isDev ? "development" : "production",
-    entry: "./src/index.js",
+    mode: isDev ? 'development' : 'production',
+    entry: './src/index.js',
     output: {
-      filename: "main.js",
-      path: path.resolve(__dirname, "build"),
+      filename: 'main.js',
+      path: path.resolve(__dirname, 'build'),
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "public/index.html"),
+        template: path.resolve(__dirname, 'public/index.html'),
       }),
     ],
     module: { rules: buildLoaders() },
     resolve: {},
-    devtool: "inline-source-map",
+    devtool: 'inline-source-map',
     devServer: {
-      static: "./build",
+      static: './build',
       port: 5000,
       open: true,
     },
     performance: {
-      hints: isDev ? false : "warning",
+      hints: isDev ? false : 'warning',
     },
   };
 

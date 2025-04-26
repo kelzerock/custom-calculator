@@ -1,19 +1,19 @@
 const buildLoaders = () => {
   const scssLoader = {
     test: /^(?!.*\.module\.s[ac]ss$).*\.s[ac]ss$/i,
-    use: ["style-loader", "css-loader", "sass-loader"],
+    use: ['style-loader', 'css-loader', 'sass-loader'],
   };
 
   const cssModuleLoader = {
     test: /\.module\.s[ac]ss$/i,
     use: [
-      "style-loader",
+      'style-loader',
       {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
           modules: {
             namedExport: false,
-            localIdentName: "[name]__[local]___[hash:base64:5]",
+            localIdentName: '[name]__[local]___[hash:base64:5]',
           },
         },
       },
