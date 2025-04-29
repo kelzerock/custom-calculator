@@ -1,5 +1,6 @@
-import { CommandAC } from './command-AC';
-import { CommandNumber } from './command-number';
-import { CommandPlug } from './command-plug';
+import { CommandAC } from './commands/command-AC';
+import { CommandNumber } from './commands/command-number';
+import { CommandPlug } from './commands/command-plug';
+import { CommandRevertSign } from './commands/command-revert-sign';
 
-export { CommandNumber, CommandPlug, CommandAC };
+export { CommandNumber, CommandPlug, CommandAC, CommandRevertSign };

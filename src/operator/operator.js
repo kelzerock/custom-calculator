@@ -9,13 +9,17 @@ export class Operator {
 
   secondOperand = null;
 
+  updateView() {
+    this.resultForView = this.currentInput;
+  }
+
   setNum(value) {
     if (this.currentInput && this.currentInput !== '0') {
       this.currentInput += value;
     } else {
       this.currentInput = value;
     }
-    this.resultForView = this.currentInput;
+    this.updateView();
   }
 
   resetAC() {
@@ -24,5 +28,17 @@ export class Operator {
     this.secondOperand = null;
     this.operation = null;
     this.resultForView = null;
+  }
+
+  revertSign() {
+    const value = this.currentInput;
+    if (value) {
+      if (value[0] === '-') {
+        this.currentInput = value.slice(1);
+      } else {
+        this.currentInput = `-${value}`;
+      }
+      this.updateView();
+    }
   }
 }

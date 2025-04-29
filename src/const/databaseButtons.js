@@ -1,4 +1,9 @@
-import { CommandAC, CommandNumber, CommandPlug } from '../command';
+import {
+  CommandAC,
+  CommandNumber,
+  CommandPlug,
+  CommandRevertSign,
+} from '../command';
 import {
   calculatorButtonForMainOperation,
   calculatorButtonForNumber,
@@ -44,7 +49,7 @@ export const databaseButtons = [
   {
     value: '±',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandRevertSign,
   },
   {
     value: '%',
@@ -100,17 +105,17 @@ export const databaseButtons = [
     command: CommandPlug,
   },
   {
-    value: '2№x',
+    value: '√x',
     functionUI: calculatorButtonForOtherOperation,
     command: CommandPlug,
   },
   {
-    value: '3№x',
+    value: '∛x',
     functionUI: calculatorButtonForOtherOperation,
     command: CommandPlug,
   },
   {
-    value: 'y№x',
+    value: 'y√x',
     functionUI: calculatorButtonForOtherOperation,
     command: CommandPlug,
   },
