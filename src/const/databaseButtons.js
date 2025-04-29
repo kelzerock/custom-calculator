@@ -1,10 +1,14 @@
 import {
   CommandAC,
+  CommandDivision,
+  CommandMultiple,
   CommandNumber,
   CommandPlug,
   CommandPoint,
   CommandRevertSign,
+  CommandSubtraction,
 } from '../command';
+import { CommandSum } from '../command/commands/command-sum';
 import {
   calculatorButtonForMainOperation,
   calculatorButtonForNumber,
@@ -60,7 +64,7 @@ export const databaseButtons = [
   {
     value: '÷',
     functionUI: calculatorButtonForMainOperation,
-    command: CommandPlug,
+    command: CommandDivision,
   },
   {
     value: '2nd',
@@ -98,7 +102,7 @@ export const databaseButtons = [
   {
     value: '×',
     functionUI: calculatorButtonForMainOperation,
-    command: CommandPlug,
+    command: CommandMultiple,
   },
   {
     value: '1/x',
@@ -148,7 +152,7 @@ export const databaseButtons = [
   {
     value: '-',
     functionUI: calculatorButtonForMainOperation,
-    command: CommandPlug,
+    command: CommandSubtraction,
   },
   {
     value: 'x!',
@@ -198,7 +202,7 @@ export const databaseButtons = [
   {
     value: '+',
     functionUI: calculatorButtonForMainOperation,
-    command: CommandPlug,
+    command: CommandSum,
   },
   {
     value: 'Rad',

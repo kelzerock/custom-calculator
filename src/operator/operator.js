@@ -1,3 +1,6 @@
+import { operations } from '../operations/operations';
+import { stringToNum } from '../utils/string-to-num';
+
 export class Operator {
   currentInput = null;
 
@@ -9,8 +12,12 @@ export class Operator {
 
   secondOperand = null;
 
-  updateView() {
+  updateViewFromCurrentInput() {
     this.resultForView = this.currentInput;
+  }
+
+  updateViewFromFirstOperand() {
+    this.resultForView = this.firstOperand;
   }
 
   resetAC() {
@@ -29,7 +36,7 @@ export class Operator {
       } else {
         this.currentInput = `-${value}`;
       }
-      this.updateView();
+      this.updateViewFromCurrentInput();
     }
   }
 
@@ -39,7 +46,7 @@ export class Operator {
     } else {
       this.currentInput = value;
     }
-    this.updateView();
+    this.updateViewFromCurrentInput();
   }
 
   setPoint() {
@@ -51,5 +58,47 @@ export class Operator {
       this.currentInput = '0.';
     }
     this.updateView();
+  }
+
+  executeCurrentOperation() {
+    this.secondOperand = this.currentInput;
+    const result = stringToNum(
+      this.operation,
+      this.firstOperand,
+      this.secondOperand
+    );
+    this.firstOperand = result;
+    this.secondOperand = null;
+    this.currentInput = null;
+    this.updateViewFromFirstOperand();
+    return result;
+  }
+
+  operationWithToOperand(operation) {
+    if (this.currentInput) {
+      if (this.firstOperand) {
+        this.executeCurrentOperation();
+      } else {
+        this.firstOperand = this.currentInput;
+        this.currentInput = '';
+        this.operation = operation;
+      }
+    }
+  }
+
+  sum() {
+    this.operationWithToOperand(operations.sum);
+  }
+
+  subtraction() {
+    this.operationWithToOperand(operations.subtraction);
+  }
+
+  multiple() {
+    this.operationWithToOperand(operations.multiple);
+  }
+
+  division() {
+    this.operationWithToOperand(operations.division);
   }
 }
