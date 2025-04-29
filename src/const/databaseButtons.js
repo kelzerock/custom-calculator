@@ -1,4 +1,4 @@
-import { CommandNumber, CommandPlug } from '../command';
+import { CommandAC, CommandNumber, CommandPlug } from '../command';
 import {
   calculatorButtonForMainOperation,
   calculatorButtonForNumber,
@@ -39,7 +39,7 @@ export const databaseButtons = [
   {
     value: 'AC',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandAC,
   },
   {
     value: '±',
@@ -227,7 +227,7 @@ export const databaseButtons = [
   {
     value: '0',
     functionUI: calculatorButtonForNumber,
-    command: CommandPlug,
+    command: CommandNumber,
     widthCell: 2,
   },
   {

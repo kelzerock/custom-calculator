@@ -1,11 +1,13 @@
 export class Display {
   display;
 
-  constructor(displayElement) {
+  constructor(displayElement, app) {
     this.display = displayElement;
+    this.app = app;
+    this.render();
   }
 
-  render(value) {
-    this.display.textContent = value;
+  render() {
+    this.display.textContent = this.app.activeOperator.resultForView || 0;
   }
 }

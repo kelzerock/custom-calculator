@@ -18,7 +18,7 @@ export class Application {
   createUI() {
     const mainElement = document.querySelector('.main');
     const display = document.createElement('div');
-    this.display = new Display(display);
+    this.display = new Display(display, this);
     const boxForButtons = document.createElement('div');
 
     display.className = styles.display;

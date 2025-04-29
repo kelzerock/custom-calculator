@@ -1,18 +1,28 @@
 export class Operator {
-  firstOperand = null;
+  currentInput = null;
 
-  secondOperand = null;
+  firstOperand = null;
 
   operation = null;
 
   resultForView = null;
 
-  getNum(number) {
-    if (this.firstOperand) {
-      this.firstOperand += number;
+  secondOperand = null;
+
+  setNum(value) {
+    if (this.currentInput && this.currentInput !== '0') {
+      this.currentInput += value;
     } else {
-      this.firstOperand = number;
+      this.currentInput = value;
     }
-    this.resultForView = this.firstOperand;
+    this.resultForView = this.currentInput;
+  }
+
+  resetAC() {
+    this.currentInput = null;
+    this.firstOperand = null;
+    this.secondOperand = null;
+    this.operation = null;
+    this.resultForView = null;
   }
 }
