@@ -13,15 +13,6 @@ export class Operator {
     this.resultForView = this.currentInput;
   }
 
-  setNum(value) {
-    if (this.currentInput && this.currentInput !== '0') {
-      this.currentInput += value;
-    } else {
-      this.currentInput = value;
-    }
-    this.updateView();
-  }
-
   resetAC() {
     this.currentInput = null;
     this.firstOperand = null;
@@ -40,5 +31,25 @@ export class Operator {
       }
       this.updateView();
     }
+  }
+
+  setNum(value) {
+    if (this.currentInput && this.currentInput !== '0') {
+      this.currentInput += value;
+    } else {
+      this.currentInput = value;
+    }
+    this.updateView();
+  }
+
+  setPoint() {
+    if (this.currentInput) {
+      if (!this.currentInput.includes('.')) {
+        this.currentInput += '.';
+      }
+    } else {
+      this.currentInput = '0.';
+    }
+    this.updateView();
   }
 }

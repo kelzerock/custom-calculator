@@ -2,6 +2,7 @@ import {
   CommandAC,
   CommandNumber,
   CommandPlug,
+  CommandPoint,
   CommandRevertSign,
 } from '../command';
 import {
@@ -238,7 +239,7 @@ export const databaseButtons = [
   {
     value: ',',
     functionUI: calculatorButtonForNumber,
-    command: CommandPlug,
+    command: CommandPoint,
   },
   {
     value: '=',
