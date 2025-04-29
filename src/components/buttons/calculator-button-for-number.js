@@ -1,9 +1,8 @@
-import { CalculatorButton } from './calculator-button';
+import { calculatorButton } from './calculator-button';
 import styles from './calculator-button.module.scss';
 
-export class CalculatorButtonForNumber extends CalculatorButton {
-  constructor(parent, value, command) {
-    super(parent, value, command);
-    this.button.classList.add(styles.buttonForNumber);
-  }
-}
+export const calculatorButtonForNumber = (parent, value, command) => {
+  const button = calculatorButton(parent, value, command);
+  button.classList.add(styles.buttonForNumber);
+  return button;
+};

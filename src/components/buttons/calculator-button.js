@@ -1,11 +1,8 @@
-export class CalculatorButton {
-  button;
-
-  constructor(parent, value, command) {
-    this.button = document.createElement('button');
-    this.button.textContent = value;
-    this.button.classList.add('button');
-    parent.append(this.button);
-    this.button.addEventListener('click', () => command.execute());
-  }
-}
+export const calculatorButton = (parent, value, command) => {
+  const button = document.createElement('button');
+  button.textContent = value;
+  button.classList.add('button');
+  parent.append(button);
+  button.addEventListener('click', () => command.execute());
+  return button;
+};

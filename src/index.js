@@ -1,2 +1,6 @@
-const sum = (a, b) => a + b;
-console.log(sum(1, 10));
+import { Application } from './app/app';
+import { Operator } from './operator/operator';
+import './style.scss';
+
+const app = new Application(new Operator());
+app.createUI();
