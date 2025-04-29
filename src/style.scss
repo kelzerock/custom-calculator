@@ -76,6 +76,7 @@ body {
   color: var(--color-stone-200);
   font-size: 1em;
   transition: background-color 0.2s ease-in;
+  overflow: hidden;
 
   &:hover {
     cursor: pointer;
