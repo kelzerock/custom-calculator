@@ -1,3 +1,5 @@
+const E = 2.718281828459045;
+
 export const operations = {
   sum: (a, b) => a + b,
   subtraction: (a, b) => a - b,
@@ -10,6 +12,9 @@ export const operations = {
   sqrt: (a) => a ** (1 / 2),
   cbrt: (a) => a ** (1 / 3),
   nthRoot: (a, b) => a ** (1 / b),
-  exp: (a) => Math.E ** a,
+  exp: (a) => E ** a,
   power10: (a) => 10 ** a,
+  ratio: (a) => 1 / a,
+  PI: () => Math.PI,
+  E: () => Math.E,
 };

@@ -1,8 +1,10 @@
 import {
   Command10Power,
   CommandAC,
+  CommandCbrt,
   CommandCube,
   CommandDivision,
+  CommandE,
   CommandEqual,
   CommandExp,
   CommandMemoryCall,
@@ -10,12 +12,16 @@ import {
   CommandMemorySubtraction,
   CommandMemorySum,
   CommandMultiple,
+  CommandNthRoot,
   CommandNumber,
   CommandPercent,
+  CommandPI,
   CommandPlug,
   CommandPoint,
   CommandPower,
+  CommandRatio,
   CommandRevertSign,
+  CommandSqrt,
   CommandSquare,
   CommandSubtraction,
 } from '../command';
@@ -118,22 +124,22 @@ export const databaseButtons = [
   {
     value: '1/x',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandRatio,
   },
   {
     value: '√x',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandSqrt,
   },
   {
     value: '∛x',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandCbrt,
   },
   {
     value: 'y√x',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandNthRoot,
   },
   {
     value: 'ln',
@@ -188,7 +194,7 @@ export const databaseButtons = [
   {
     value: 'e',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandE,
   },
   {
     value: 'EE',
@@ -238,7 +244,7 @@ export const databaseButtons = [
   {
     value: '𝛑',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandPI,
   },
   {
     value: 'Rand',

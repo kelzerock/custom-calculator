@@ -141,6 +141,15 @@ export class Operator {
     this.currentInput = '';
   }
 
+  operationWithoutOperand(operation) {
+    const result = stringToNum(operation);
+    this.firstOperand = result;
+    this.currentInput = null;
+    this.activeResult = true;
+    this.operationComplete = true;
+    this.updateViewFromFirstOperand();
+  }
+
   operationWithSingleOperand(operation) {
     const result = stringToNum(
       operation,
@@ -217,16 +226,40 @@ export class Operator {
     this.operationWithSingleOperand(operations.power10);
   }
 
+  mathCbrt() {
+    this.operationWithSingleOperand(operations.cbrt);
+  }
+
   mathCube() {
     this.operationWithSingleOperand(operations.cube);
+  }
+
+  mathE() {
+    this.operationWithoutOperand(operations.E);
   }
 
   mathExp() {
     this.operationWithSingleOperand(operations.exp);
   }
 
+  mathNthRoot() {
+    this.operationWithTwoOperand(operations.nthRoot);
+  }
+
   mathPower() {
     this.operationWithTwoOperand(operations.power);
+  }
+
+  mathPI() {
+    this.operationWithoutOperand(operations.PI);
+  }
+
+  mathRatio() {
+    this.operationWithSingleOperand(operations.ratio);
+  }
+
+  mathSqrt() {
+    this.operationWithSingleOperand(operations.sqrt);
   }
 
   mathSquare() {
