@@ -76,12 +76,18 @@ body {
   justify-content: center;
   align-items: center;
   color: var(--color-stone-200);
-  font-size: 1em;
+  font-size: 0.7rem;
   transition: background-color 0.2s ease-in;
   overflow: hidden;
 
   &:hover {
     cursor: pointer;
     transition: background-color 0.2s ease-in;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .button {
+    font-size: 0.5rem;
   }
 }
