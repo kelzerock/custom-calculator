@@ -107,6 +107,40 @@ export class Operator {
     this.updateViewFromFirstOperand();
   }
 
+  memoryClean() {
+    this.memoryOperand = null;
+  }
+
+  memoryCall() {
+    if (this.memoryOperand) {
+      this.firstOperand = this.memoryOperand;
+    } else {
+      this.firstOperand = '0';
+    }
+    this.currentInput = null;
+    this.activeResult = true;
+    this.operationComplete = true;
+    this.updateViewFromFirstOperand();
+  }
+
+  memorySum() {
+    this.memoryOperand = stringToNum(
+      operations.sum,
+      this.memoryOperand || '0',
+      this.resultForView
+    );
+    this.currentInput = '';
+  }
+
+  memorySubtraction() {
+    this.memoryOperand = stringToNum(
+      operations.subtraction,
+      this.memoryOperand || '0',
+      this.resultForView
+    );
+    this.currentInput = '';
+  }
+
   operationWithTwoOperand(operation) {
     if (this.currentInput || this.firstOperand) {
       if (this.firstOperand && !this.operationComplete) {

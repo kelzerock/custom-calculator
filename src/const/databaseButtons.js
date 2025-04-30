@@ -2,6 +2,10 @@ import {
   CommandAC,
   CommandDivision,
   CommandEqual,
+  CommandMemoryCall,
+  CommandMemoryClean,
+  CommandMemorySubtraction,
+  CommandMemorySum,
   CommandMultiple,
   CommandNumber,
   CommandPercent,
@@ -31,22 +35,22 @@ export const databaseButtons = [
   {
     value: 'mc',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandMemoryClean,
   },
   {
     value: 'm+',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandMemorySum,
   },
   {
     value: 'm-',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandMemorySubtraction,
   },
   {
     value: 'mr',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandMemoryCall,
   },
   {
     value: 'AC',
