@@ -141,6 +141,18 @@ export class Operator {
     this.currentInput = '';
   }
 
+  operationWithSingleOperand(operation) {
+    const result = stringToNum(
+      operation,
+      this.currentInput || this.firstOperand
+    );
+    this.firstOperand = result;
+    this.currentInput = null;
+    this.activeResult = true;
+    this.operationComplete = true;
+    this.updateViewFromFirstOperand();
+  }
+
   operationWithTwoOperand(operation) {
     if (this.currentInput || this.firstOperand) {
       if (this.firstOperand && !this.operationComplete) {
@@ -199,5 +211,25 @@ export class Operator {
         this.executeCurrentOperation();
       }
     }
+  }
+
+  math10Power() {
+    this.operationWithSingleOperand(operations.power10);
+  }
+
+  mathCube() {
+    this.operationWithSingleOperand(operations.cube);
+  }
+
+  mathExp() {
+    this.operationWithSingleOperand(operations.exp);
+  }
+
+  mathPower() {
+    this.operationWithTwoOperand(operations.power);
+  }
+
+  mathSquare() {
+    this.operationWithSingleOperand(operations.square);
   }
 }

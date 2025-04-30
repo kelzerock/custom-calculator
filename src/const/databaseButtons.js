@@ -1,7 +1,10 @@
 import {
+  Command10Power,
   CommandAC,
+  CommandCube,
   CommandDivision,
   CommandEqual,
+  CommandExp,
   CommandMemoryCall,
   CommandMemoryClean,
   CommandMemorySubtraction,
@@ -11,7 +14,9 @@ import {
   CommandPercent,
   CommandPlug,
   CommandPoint,
+  CommandPower,
   CommandRevertSign,
+  CommandSquare,
   CommandSubtraction,
 } from '../command';
 import { CommandSum } from '../command/commands/command-sum';
@@ -78,29 +83,29 @@ export const databaseButtons = [
     command: CommandPlug,
   },
   {
-    value: 'x2',
+    value: 'x²',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandSquare,
   },
   {
-    value: 'x3',
+    value: 'x³',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandCube,
   },
   {
-    value: 'xy',
+    value: 'xʸ',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandPower,
   },
   {
     value: 'ex',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandExp,
   },
   {
     value: '10x',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: Command10Power,
   },
   { value: '7', functionUI: calculatorButtonForNumber, command: CommandNumber },
   { value: '8', functionUI: calculatorButtonForNumber, command: CommandNumber },

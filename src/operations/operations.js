@@ -4,4 +4,12 @@ export const operations = {
   multiple: (a, b) => a * b,
   division: (a, b) => a / b,
   percent: (a) => a / 100,
+  square: (a) => a ** 2,
+  cube: (a) => a ** 3,
+  power: (a, b) => a ** b,
+  sqrt: (a) => a ** (1 / 2),
+  cbrt: (a) => a ** (1 / 3),
+  nthRoot: (a, b) => a ** (1 / b),
+  exp: (a) => Math.E ** a,
+  power10: (a) => 10 ** a,
 };
