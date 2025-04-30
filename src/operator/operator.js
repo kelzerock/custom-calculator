@@ -8,6 +8,8 @@ export class Operator {
 
   firstOperand = null;
 
+  memoryOperand = null;
+
   operation = null;
 
   operationComplete = false;
@@ -101,6 +103,7 @@ export class Operator {
     this.firstOperand = result;
     this.currentInput = null;
     this.activeResult = true;
+    this.operationComplete = true;
     this.updateViewFromFirstOperand();
   }
 
@@ -113,9 +116,9 @@ export class Operator {
         this.firstOperand = this.currentInput || this.firstOperand;
         this.currentInput = '';
         this.operation = operation;
-        this.operationComplete = false;
         this.activeResult = true;
       }
+      this.operationComplete = false;
     } else {
       this.operation = operation;
     }
@@ -138,7 +141,29 @@ export class Operator {
   }
 
   equal() {
-    this.operationComplete = true;
     this.executeCurrentOperation();
+  }
+
+  percent() {
+    if (this.currentInput || this.firstOperand) {
+      if (this.firstOperand && !this.operationComplete) {
+        this.currentInput = this.currentInput || this.secondOperand;
+        if (
+          this.operation === operations.multiple ||
+          this.operation === operations.division
+        ) {
+          this.currentInput = stringToNum(
+            operations.percent,
+            this.currentInput
+          );
+        } else {
+          this.currentInput = stringToNum(
+            operations.percent,
+            this.this.firstOperand * this.currentInput
+          );
+        }
+        this.executeCurrentOperation();
+      }
+    }
   }
 }

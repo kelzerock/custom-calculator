@@ -4,6 +4,7 @@ import {
   CommandEqual,
   CommandMultiple,
   CommandNumber,
+  CommandPercent,
   CommandPlug,
   CommandPoint,
   CommandRevertSign,
@@ -60,7 +61,7 @@ export const databaseButtons = [
   {
     value: '%',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandPercent,
   },
   {
     value: '÷',

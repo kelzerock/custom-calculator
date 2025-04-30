@@ -3,4 +3,5 @@ export const operations = {
   subtraction: (a, b) => a - b,
   multiple: (a, b) => a * b,
   division: (a, b) => a / b,
+  percent: (a) => a / 100,
 };
