@@ -2,11 +2,15 @@ import { operations } from '../operations/operations';
 import { stringToNum } from '../utils/string-to-num';
 
 export class Operator {
+  activeResult = false;
+
   currentInput = null;
 
   firstOperand = null;
 
   operation = null;
+
+  operationComplete = false;
 
   resultForView = null;
 
@@ -26,17 +30,30 @@ export class Operator {
     this.secondOperand = null;
     this.operation = null;
     this.resultForView = null;
+    this.activeResult = false;
   }
 
   revertSign() {
-    const value = this.currentInput;
-    if (value) {
-      if (value[0] === '-') {
-        this.currentInput = value.slice(1);
-      } else {
-        this.currentInput = `-${value}`;
+    if (this.activeResult) {
+      const value = this.firstOperand;
+      if (value) {
+        if (value[0] === '-') {
+          this.firstOperand = value.slice(1);
+        } else {
+          this.firstOperand = `-${value}`;
+        }
+        this.updateViewFromFirstOperand();
       }
-      this.updateViewFromCurrentInput();
+    } else {
+      const value = this.currentInput;
+      if (value) {
+        if (value[0] === '-') {
+          this.currentInput = value.slice(1);
+        } else {
+          this.currentInput = `-${value}`;
+        }
+        this.updateViewFromCurrentInput();
+      }
     }
   }
 
@@ -45,6 +62,12 @@ export class Operator {
       this.currentInput += value;
     } else {
       this.currentInput = value;
+    }
+    this.activeResult = false;
+    if (this.operationComplete) {
+      this.operationComplete = false;
+      this.operation = null;
+      this.firstOperand = null;
     }
     this.updateViewFromCurrentInput();
   }
@@ -57,48 +80,65 @@ export class Operator {
     } else {
       this.currentInput = '0.';
     }
-    this.updateView();
+    this.activeResult = false;
+    if (this.operationComplete) {
+      this.operationComplete = false;
+      this.operation = null;
+      this.firstOperand = null;
+    }
+    this.updateViewFromCurrentInput();
   }
 
   executeCurrentOperation() {
-    this.secondOperand = this.currentInput;
+    if (!this.firstOperand || !(this.currentInput || this.secondOperand))
+      return;
+    this.secondOperand = this.currentInput || this.secondOperand;
     const result = stringToNum(
       this.operation,
       this.firstOperand,
       this.secondOperand
     );
     this.firstOperand = result;
-    this.secondOperand = null;
     this.currentInput = null;
+    this.activeResult = true;
     this.updateViewFromFirstOperand();
-    return result;
   }
 
-  operationWithToOperand(operation) {
-    if (this.currentInput) {
-      if (this.firstOperand) {
+  operationWithTwoOperand(operation) {
+    if (this.currentInput || this.firstOperand) {
+      if (this.firstOperand && !this.operationComplete) {
         this.executeCurrentOperation();
+        this.operation = operation;
       } else {
-        this.firstOperand = this.currentInput;
+        this.firstOperand = this.currentInput || this.firstOperand;
         this.currentInput = '';
         this.operation = operation;
+        this.operationComplete = false;
+        this.activeResult = true;
       }
+    } else {
+      this.operation = operation;
     }
   }
 
   sum() {
-    this.operationWithToOperand(operations.sum);
+    this.operationWithTwoOperand(operations.sum);
   }
 
   subtraction() {
-    this.operationWithToOperand(operations.subtraction);
+    this.operationWithTwoOperand(operations.subtraction);
   }
 
   multiple() {
-    this.operationWithToOperand(operations.multiple);
+    this.operationWithTwoOperand(operations.multiple);
   }
 
   division() {
-    this.operationWithToOperand(operations.division);
+    this.operationWithTwoOperand(operations.division);
+  }
+
+  equal() {
+    this.operationComplete = true;
+    this.executeCurrentOperation();
   }
 }

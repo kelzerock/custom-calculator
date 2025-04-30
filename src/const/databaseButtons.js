@@ -1,6 +1,7 @@
 import {
   CommandAC,
   CommandDivision,
+  CommandEqual,
   CommandMultiple,
   CommandNumber,
   CommandPlug,
@@ -248,6 +249,6 @@ export const databaseButtons = [
   {
     value: '=',
     functionUI: calculatorButtonForMainOperation,
-    command: CommandPlug,
+    command: CommandEqual,
   },
 ];

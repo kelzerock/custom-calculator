@@ -1,5 +1,6 @@
 import { CommandAC } from './commands/command-AC';
 import { CommandDivision } from './commands/command-division';
+import { CommandEqual } from './commands/command-equal';
 import { CommandMultiple } from './commands/command-multiple';
 import { CommandNumber } from './commands/command-number';
 import { CommandPlug } from './commands/command-plug';
@@ -8,12 +9,13 @@ import { CommandRevertSign } from './commands/command-revert-sign';
 import { CommandSubtraction } from './commands/command-subtraction';
 
 export {
+  CommandAC,
+  CommandDivision,
+  CommandEqual,
+  CommandMultiple,
   CommandNumber,
   CommandPlug,
-  CommandAC,
-  CommandRevertSign,
   CommandPoint,
+  CommandRevertSign,
   CommandSubtraction,
-  CommandMultiple,
-  CommandDivision,
 };
