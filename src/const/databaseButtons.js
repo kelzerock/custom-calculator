@@ -7,6 +7,7 @@ import {
   CommandE,
   CommandEqual,
   CommandExp,
+  CommandFactorial,
   CommandMemoryCall,
   CommandMemoryClean,
   CommandMemorySubtraction,
@@ -34,14 +35,10 @@ import {
 
 export const databaseButtons = [
   {
-    value: '(',
+    value: 'UNDO',
     functionUI: calculatorButtonForOtherOperation,
     command: CommandPlug,
-  },
-  {
-    value: ')',
-    functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    widthCell: 2,
   },
   {
     value: 'mc',
@@ -174,7 +171,7 @@ export const databaseButtons = [
   {
     value: 'x!',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandFactorial,
   },
   {
     value: 'sin',

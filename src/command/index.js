@@ -6,6 +6,7 @@ import { CommandDivision } from './commands/command-division';
 import { CommandE } from './commands/command-E';
 import { CommandEqual } from './commands/command-equal';
 import { CommandExp } from './commands/command-exp';
+import { CommandFactorial } from './commands/command-factorial';
 import { CommandMemoryCall } from './commands/command-memory-call';
 import { CommandMemoryClean } from './commands/command-memory-clean';
 import { CommandMemorySubtraction } from './commands/command-memory-subtraction';
@@ -33,6 +34,7 @@ export {
   CommandE,
   CommandEqual,
   CommandExp,
+  CommandFactorial,
   CommandMemoryCall,
   CommandMemoryClean,
   CommandMemorySubtraction,

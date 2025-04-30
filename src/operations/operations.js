@@ -17,4 +17,16 @@ export const operations = {
   ratio: (a) => 1 / a,
   PI: () => Math.PI,
   E: () => Math.E,
+  factorial: (a) => {
+    if (a >= 1) {
+      let counter = a;
+      let result = 1;
+      while (counter > 1) {
+        result *= counter;
+        counter -= 1;
+      }
+      return result;
+    }
+    return 0;
+  },
 };

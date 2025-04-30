@@ -242,6 +242,10 @@ export class Operator {
     this.operationWithSingleOperand(operations.exp);
   }
 
+  mathFactorial() {
+    this.operationWithSingleOperand(operations.factorial);
+  }
+
   mathNthRoot() {
     this.operationWithTwoOperand(operations.nthRoot);
   }
