@@ -28,6 +28,11 @@ export class Operator {
     this.resultForView = this.firstOperand;
   }
 
+  viewError() {
+    this.resultForView = 'ERROR';
+    this.reset();
+  }
+
   resetAC() {
     this.resultForView = null;
     this.memoryOperand = null;
@@ -113,8 +118,7 @@ export class Operator {
       this.operation === operations.division &&
       parseFloat(this.secondOperand) === 0
     ) {
-      this.resultForView = 'ERROR';
-      this.reset();
+      this.viewError();
     } else {
       const result = stringToNum(
         this.operation,
@@ -185,8 +189,12 @@ export class Operator {
   operationWithSingleOperand(operation) {
     const currentValue = this.currentInput || this.firstOperand;
     if (operation === operations.ratio && parseFloat(currentValue) === 0) {
-      this.resultForView = 'ERROR';
-      this.reset();
+      this.viewError();
+    } else if (
+      operation === operations.factorial &&
+      parseFloat(currentValue) % 1 !== 0
+    ) {
+      this.viewError();
     } else {
       const result = stringToNum(operation, currentValue);
       this.firstOperand = result;
