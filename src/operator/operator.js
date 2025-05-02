@@ -219,6 +219,7 @@ export class Operator {
         this.operationComplete = false;
       } else if (this.firstOperand && this.secondOperand) {
         this.operation = operation;
+        this.operationComplete = false;
       } else {
         this.firstOperand = this.currentInput || this.firstOperand;
         this.currentInput = '';
@@ -228,6 +229,7 @@ export class Operator {
       }
     } else {
       this.operation = operation;
+      this.operationComplete = false;
     }
   }
 

@@ -4,6 +4,6 @@ export class CommandPI extends Command {
   execute() {
     this.app.activeOperator.mathPI();
     this.display.render();
-    return false;
+    return true;
   }
 }

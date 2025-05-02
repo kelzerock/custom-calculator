@@ -9,6 +9,6 @@ export class CommandNumber extends Command {
   execute() {
     this.app.activeOperator.setNum(this.value);
     this.display.render();
-    return false;
+    return true;
   }
 }
