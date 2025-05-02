@@ -3,7 +3,6 @@
 
   &:hover {
     background-color: var(--color-stone-500);
-    border: solid 2px var(--color-stone-500);
   }
 }
 
@@ -12,7 +11,6 @@
 
   &:hover {
     background-color: var(--color-orange-500);
-    border: solid 2px var(--color-orange-600);
   }
 }
 
@@ -21,6 +19,39 @@
 
   &:hover {
     background-color: var(--color-stone-600);
-    border: solid 2px var(--color-stone-500);
   }
+}
+
+.span {
+  position: relative;
+  display: inline-block;
+
+  span {
+    position: absolute;
+    font-size: 6px;
+  }
+}
+
+.afterUp {
+  top: 0;
+  right: 0;
+  transform: translate(100%, -2px);
+}
+
+.afterDown {
+  bottom: 0;
+  right: 0;
+  transform: translate(100%, 2px);
+}
+
+.beforeUp {
+  top: 0;
+  left: 0;
+  transform: translate(-100%, -2px);
+}
+
+.beforeDown {
+  bottom: 0;
+  left: 0;
+  transform: translate(-100%, 2px);
 }
