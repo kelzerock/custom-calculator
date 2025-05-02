@@ -24,6 +24,7 @@ import { CommandRevertSign } from './commands/command-revert-sign';
 import { CommandSqrt } from './commands/command-sqrt';
 import { CommandSquare } from './commands/command-square';
 import { CommandSubtraction } from './commands/command-subtraction';
+import { CommandUndo } from './commands/command-undo';
 
 export {
   Command10Power,
@@ -52,4 +53,5 @@ export {
   CommandSqrt,
   CommandSquare,
   CommandSubtraction,
+  CommandUndo,
 };

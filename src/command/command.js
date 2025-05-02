@@ -8,15 +8,15 @@ export class Command {
   constructor(app, display) {
     this.app = app;
     this.display = display;
-    this.backup = '';
+    this.backup = {};
   }
 
   saveBackup() {
-    this.backup = this.display.value;
+    this.backup = window.structuredClone(this.app.activeOperator);
   }
 
   undo() {
-    this.display.value = this.backup;
+    this.app.activeOperator = this.backup;
   }
 
   execute() {

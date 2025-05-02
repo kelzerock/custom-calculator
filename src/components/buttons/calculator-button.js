@@ -1,6 +1,6 @@
 import styles from './calculator-button.module.scss';
 
-export const calculatorButton = (parent, element, command) => {
+export const calculatorButton = (parent, element, command, app) => {
   const button = document.createElement('button');
   const text = document.createElement('span');
   text.textContent = element.value;
@@ -8,7 +8,7 @@ export const calculatorButton = (parent, element, command) => {
   button.append(text);
   button.classList.add('button');
   parent.append(button);
-  button.addEventListener('click', () => command.execute());
+  button.addEventListener('click', () => app.executeCommand(command));
 
   if (element.beforeUp) {
     const info = document.createElement('span');

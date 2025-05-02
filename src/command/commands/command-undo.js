@@ -1,8 +1,8 @@
 import { Command } from '../command';
 
-export class CommandPI extends Command {
+export class CommandUndo extends Command {
   execute() {
-    this.app.activeOperator.mathPI();
+    this.app.undo();
     this.display.render();
     return false;
   }

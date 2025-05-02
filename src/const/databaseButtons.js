@@ -25,6 +25,7 @@ import {
   CommandSqrt,
   CommandSquare,
   CommandSubtraction,
+  CommandUndo,
 } from '../command';
 import { CommandSum } from '../command/commands/command-sum';
 import {
@@ -37,7 +38,7 @@ export const databaseButtons = [
   {
     value: 'UNDO',
     functionUI: calculatorButtonForOtherOperation,
-    command: CommandPlug,
+    command: CommandUndo,
     widthCell: 2,
   },
   {

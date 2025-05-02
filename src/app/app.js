@@ -31,11 +31,37 @@ export class Application {
   }
 
   executeCommand(command) {
-    if (command.execute()) this.history.push(command);
+    const {
+      activeResult,
+      currentInput,
+      firstOperand,
+      memoryOperand,
+      operation,
+      operationComplete,
+      resultForView,
+      secondOperand,
+      readyToOperationWithTwoOperand,
+    } = this.activeOperator;
+    if (command.execute())
+      this.history.push({
+        activeResult,
+        currentInput,
+        firstOperand,
+        memoryOperand,
+        operation,
+        operationComplete,
+        resultForView,
+        secondOperand,
+        readyToOperationWithTwoOperand,
+      });
   }
 
   undo() {
-    const command = this.history.pop();
-    if (command != null) command.undo();
+    if (this.history.length === 0) return;
+    const state = this.history.pop();
+    if (state) {
+      Object.assign(this.activeOperator, state);
+      this.display.render();
+    }
   }
 }
