@@ -18,6 +18,8 @@ export class Operator {
 
   secondOperand = null;
 
+  readyToOperationWithTwoOperand = false;
+
   updateViewFromCurrentInput() {
     this.resultForView = this.currentInput;
   }
@@ -28,6 +30,7 @@ export class Operator {
 
   resetAC() {
     this.resultForView = null;
+    this.memoryOperand = null;
     this.reset();
   }
 
@@ -75,6 +78,9 @@ export class Operator {
       this.operation = null;
       this.firstOperand = null;
     }
+    if (this.firstOperand) {
+      this.readyToOperationWithTwoOperand = true;
+    }
     this.updateViewFromCurrentInput();
   }
 
@@ -91,6 +97,9 @@ export class Operator {
       this.operationComplete = false;
       this.operation = null;
       this.firstOperand = null;
+    }
+    if (this.firstOperand) {
+      this.readyToOperationWithTwoOperand = true;
     }
     this.updateViewFromCurrentInput();
   }
@@ -115,7 +124,6 @@ export class Operator {
       this.firstOperand = result;
       this.currentInput = null;
       this.activeResult = true;
-      this.operationComplete = true;
       this.updateViewFromFirstOperand();
     }
   }
@@ -125,6 +133,7 @@ export class Operator {
   }
 
   memoryCall() {
+    this.secondOperand = this.currentInput || this.firstOperand;
     if (this.memoryOperand) {
       this.firstOperand = this.memoryOperand;
     } else {
@@ -142,7 +151,9 @@ export class Operator {
       this.memoryOperand || '0',
       this.resultForView
     );
+    this.firstOperand = this.currentInput || this.resultForView;
     this.currentInput = '';
+    this.operation = null;
   }
 
   memorySubtraction() {
@@ -151,7 +162,9 @@ export class Operator {
       this.memoryOperand || '0',
       this.resultForView
     );
+    this.firstOperand = this.currentInput || this.resultForView;
     this.currentInput = '';
+    this.operation = null;
   }
 
   operationWithoutOperand(operation) {
@@ -180,16 +193,25 @@ export class Operator {
 
   operationWithTwoOperand(operation) {
     if (this.currentInput || this.firstOperand) {
-      if (this.firstOperand && !this.operationComplete) {
+      if (
+        this.firstOperand &&
+        this.readyToOperationWithTwoOperand &&
+        !this.operationComplete &&
+        this.operation
+      ) {
         this.executeCurrentOperation();
+        this.operation = operation;
+        this.readyToOperationWithTwoOperand = false;
+        this.operationComplete = false;
+      } else if (this.firstOperand && this.secondOperand) {
         this.operation = operation;
       } else {
         this.firstOperand = this.currentInput || this.firstOperand;
         this.currentInput = '';
         this.operation = operation;
         this.activeResult = true;
+        this.operationComplete = false;
       }
-      this.operationComplete = false;
     } else {
       this.operation = operation;
     }
@@ -213,6 +235,7 @@ export class Operator {
 
   equal() {
     this.executeCurrentOperation();
+    this.operationComplete = true;
   }
 
   percent() {

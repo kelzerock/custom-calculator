@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --env mode=dev",
     "build:prod": "webpack --env mode=prod",
     "start": "webpack server --env mode=dev",
     "lint": "eslint .",
+    "test": "jest",
     "lint:fix": "eslint --fix .",
     "prettier": "prettier --write .",
     "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'"
@@ -23,6 +23,7 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",
     "html-webpack-plugin": "^5.6.3",
+    "jest": "^29.7.0",
     "lint-staged": "^15.5.1",
     "prettier": "3.5.3",
     "sass": "^1.87.0",
