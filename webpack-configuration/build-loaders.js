@@ -1,4 +1,10 @@
 const buildLoaders = () => {
+  const babelLoader = {
+    test: /\.jsx?$/,
+    // exclude: ['node_modules'],
+    use: ['babel-loader'],
+  };
+
   const scssLoader = {
     test: /^(?!.*\.module\.s[ac]ss$).*\.s[ac]ss$/i,
     use: ['style-loader', 'css-loader', 'sass-loader'],
@@ -20,7 +26,7 @@ const buildLoaders = () => {
     ],
   };
 
-  return [scssLoader, cssModuleLoader];
+  return [babelLoader, scssLoader, cssModuleLoader];
 };
 
 module.exports = { buildLoaders };

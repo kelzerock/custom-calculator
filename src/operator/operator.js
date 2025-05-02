@@ -146,25 +146,31 @@ export class Operator {
   }
 
   memorySum() {
-    this.memoryOperand = stringToNum(
-      operations.sum,
-      this.memoryOperand || '0',
-      this.resultForView
-    );
-    this.firstOperand = this.currentInput || this.resultForView;
-    this.currentInput = '';
-    this.operation = null;
+    const resultData = parseFloat(this.resultForView);
+    if (typeof resultData === 'number' && !Number.isNaN(resultData)) {
+      this.memoryOperand = stringToNum(
+        operations.sum,
+        this.memoryOperand || '0',
+        this.resultForView
+      );
+      this.firstOperand = this.currentInput || this.resultForView;
+      this.currentInput = '';
+      this.operation = null;
+    }
   }
 
   memorySubtraction() {
-    this.memoryOperand = stringToNum(
-      operations.subtraction,
-      this.memoryOperand || '0',
-      this.resultForView
-    );
-    this.firstOperand = this.currentInput || this.resultForView;
-    this.currentInput = '';
-    this.operation = null;
+    const resultData = parseFloat(this.resultForView);
+    if (typeof resultData === 'number' && !Number.isNaN(resultData)) {
+      this.memoryOperand = stringToNum(
+        operations.subtraction,
+        this.memoryOperand || '0',
+        this.resultForView
+      );
+      this.firstOperand = this.currentInput || this.resultForView;
+      this.currentInput = '';
+      this.operation = null;
+    }
   }
 
   operationWithoutOperand(operation) {
@@ -239,25 +245,21 @@ export class Operator {
   }
 
   percent() {
-    if (this.currentInput || this.firstOperand) {
-      if (this.firstOperand && !this.operationComplete) {
-        this.currentInput = this.currentInput || this.secondOperand;
-        if (
-          this.operation === operations.multiple ||
-          this.operation === operations.division
-        ) {
-          this.currentInput = stringToNum(
-            operations.percent,
-            this.currentInput
-          );
-        } else {
-          this.currentInput = stringToNum(
-            operations.percent,
-            this.this.firstOperand * this.currentInput
-          );
-        }
-        this.executeCurrentOperation();
+    if (this.firstOperand && this.operation && !this.operationComplete) {
+      this.currentInput = this.currentInput || this.secondOperand;
+      if (
+        this.operation === operations.multiple ||
+        this.operation === operations.division
+      ) {
+        this.currentInput = stringToNum(operations.percent, this.currentInput);
+      } else {
+        this.currentInput = stringToNum(
+          operations.percent,
+          this.firstOperand * this.currentInput
+        );
       }
+      this.executeCurrentOperation();
+      this.readyToOperationWithTwoOperand = false;
     }
   }
 
