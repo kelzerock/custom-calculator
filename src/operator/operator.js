@@ -27,11 +27,15 @@ export class Operator {
   }
 
   resetAC() {
+    this.resultForView = null;
+    this.reset();
+  }
+
+  reset() {
     this.currentInput = null;
     this.firstOperand = null;
     this.secondOperand = null;
     this.operation = null;
-    this.resultForView = null;
     this.activeResult = false;
   }
 
@@ -95,16 +99,25 @@ export class Operator {
     if (!this.firstOperand || !(this.currentInput || this.secondOperand))
       return;
     this.secondOperand = this.currentInput || this.secondOperand;
-    const result = stringToNum(
-      this.operation,
-      this.firstOperand,
-      this.secondOperand
-    );
-    this.firstOperand = result;
-    this.currentInput = null;
-    this.activeResult = true;
-    this.operationComplete = true;
-    this.updateViewFromFirstOperand();
+
+    if (
+      this.operation === operations.division &&
+      parseFloat(this.secondOperand) === 0
+    ) {
+      this.resultForView = 'ERROR';
+      this.reset();
+    } else {
+      const result = stringToNum(
+        this.operation,
+        this.firstOperand,
+        this.secondOperand
+      );
+      this.firstOperand = result;
+      this.currentInput = null;
+      this.activeResult = true;
+      this.operationComplete = true;
+      this.updateViewFromFirstOperand();
+    }
   }
 
   memoryClean() {
@@ -151,15 +164,18 @@ export class Operator {
   }
 
   operationWithSingleOperand(operation) {
-    const result = stringToNum(
-      operation,
-      this.currentInput || this.firstOperand
-    );
-    this.firstOperand = result;
-    this.currentInput = null;
-    this.activeResult = true;
-    this.operationComplete = true;
-    this.updateViewFromFirstOperand();
+    const currentValue = this.currentInput || this.firstOperand;
+    if (operation === operations.ratio && parseFloat(currentValue) === 0) {
+      this.resultForView = 'ERROR';
+      this.reset();
+    } else {
+      const result = stringToNum(operation, currentValue);
+      this.firstOperand = result;
+      this.currentInput = null;
+      this.activeResult = true;
+      this.operationComplete = true;
+      this.updateViewFromFirstOperand();
+    }
   }
 
   operationWithTwoOperand(operation) {

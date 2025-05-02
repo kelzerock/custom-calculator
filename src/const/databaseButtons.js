@@ -62,7 +62,7 @@ export const databaseButtons = [
   },
   {
     value: 'AC',
-    functionUI: calculatorButtonForOtherOperation,
+    functionUI: calculatorButtonForMainOperation,
     command: CommandAC,
   },
   {

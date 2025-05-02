@@ -21,7 +21,7 @@ export const addSeparator = (string) => {
     typeof string !== 'string' ||
     Number.isNaN(Number(string.replace('-', '').replace('.', '')))
   ) {
-    return 'Invalid input data!';
+    return 'ERROR';
   }
   const isNegative = string.includes('-');
   const cutString = isNegative ? string.slice(1) : string;
