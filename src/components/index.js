@@ -1,9 +1,3 @@
-import { calculatorButtonForMainOperation } from './buttons/calculator-button-for-main-operation';
-import { calculatorButtonForNumber } from './buttons/calculator-button-for-number';
-import { calculatorButtonForOtherOperation } from './buttons/calculator-button-for-other-operation';
+import { calculatorButton } from './buttons/calculator-button';
 
-export {
-  calculatorButtonForMainOperation,
-  calculatorButtonForNumber,
-  calculatorButtonForOtherOperation,
-};
+export { calculatorButton };
