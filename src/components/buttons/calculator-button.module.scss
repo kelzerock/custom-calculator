@@ -1,0 +1,57 @@
+.buttonForNumber {
+  background-color: var(--color-stone-400);
+
+  &:hover {
+    background-color: var(--color-stone-500);
+  }
+}
+
+.buttonForMainOperation {
+  background-color: var(--color-orange-400);
+
+  &:hover {
+    background-color: var(--color-orange-500);
+  }
+}
+
+.buttonForOtherOperation {
+  background-color: var(--color-stone-500);
+
+  &:hover {
+    background-color: var(--color-stone-600);
+  }
+}
+
+.span {
+  position: relative;
+  display: inline-block;
+
+  span {
+    position: absolute;
+    font-size: 6px;
+  }
+}
+
+.afterUp {
+  top: 0;
+  right: 0;
+  transform: translate(100%, -2px);
+}
+
+.afterDown {
+  bottom: 0;
+  right: 0;
+  transform: translate(100%, 2px);
+}
+
+.beforeUp {
+  top: 0;
+  left: 0;
+  transform: translate(-100%, -2px);
+}
+
+.beforeDown {
+  bottom: 0;
+  left: 0;
+  transform: translate(-100%, 2px);
+}
