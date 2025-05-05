@@ -35,7 +35,6 @@ export class Operator {
 
   resetAC() {
     this.resultForView = null;
-    this.memoryOperand = null;
     this.reset();
   }
 
